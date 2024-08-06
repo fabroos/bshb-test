@@ -1,0 +1,230 @@
+enum AnalyticsKeyScope {
+  query
+  send
+}
+
+type BaseRichTextJson implements RichTextJson {
+  blocks: String!
+  content: JSON!
+  toc: JSON!
+}
+
+type BlockAudio {
+  fileName: String!
+  fileSize: Int!
+  lastModified: Float!
+  mimeType: String!
+  url: String!
+}
+
+type BlockCodeSnippet {
+  allowedLanguages: [String!]!
+  code: String!
+  html(
+    """Theme for the code snippet"""
+    theme: String = "github-dark"
+  ): String! @deprecated(reason: "Figuring out the correct api.")
+  language: String!
+}
+
+type BlockColor {
+  b: Int!
+  g: Int!
+  hex: String!
+  hsl: String!
+  r: Int!
+  rgb: String!
+}
+
+interface BlockDocument {
+  _analyticsKey(
+    """
+    The scope of the analytics key. Use `send` for just ingesting data. Use `query` if you need to show an analytics data in your website.
+    
+    Have in mind, if you expose your `query` analytics key in the frontend, you'll be exposing all of this block's analytics data to the public. This is generally safe, but it might not be in your case.
+    """
+    scope: AnalyticsKeyScope = send
+  ): String!
+  _id: String!
+  _idPath: String!
+  _slug: String!
+  _slugPath: String!
+  _sys: BlockDocumentSys!
+  _title: String!
+}
+
+type BlockDocumentSys {
+  apiNamePath: String!
+  createdAt: String!
+  hash: String!
+  id: ID!
+  idPath: String!
+  lastModifiedAt: String!
+  slug: String!
+  slugPath: String!
+  title: String!
+}
+
+type BlockFile {
+  fileName: String!
+  fileSize: Int!
+  lastModified: Float!
+  mimeType: String!
+  url: String!
+}
+
+type BlockImage {
+  alt: String
+  aspectRatio: String!
+  fileName: String!
+  fileSize: Int!
+  height: Int!
+  lastModified: Float!
+  mimeType: String!
+  placeholderURL: String!
+  rawUrl: String! @deprecated(reason: "Use `url` instead.")
+  thumbhash: String!
+
+  "This field is used to generate the image URL with the provided options. The options are passed as arguments. For example, if you want to resize the image to 200x200 pixels, you can use the following query:\n\n```graphql\n{\n  blockImage {\n    url(width: 200, height: 200)\n  }\n}\n```\n\nThis will return the URL with the width and height set to 200 pixels.\n\nBaseHub uses Cloudflare for image resizing. Check out [all available options in their docs](https://developers.cloudflare.com/images/transform-images/transform-via-workers/#fetch-options).\n"
+  url(anim: String, background: String, blur: Int, border: String, brightness: Int, compression: String, contrast: Int, dpr: Int, fit: String, format: String, gamma: String, gravity: String, height: Int, metadata: String, quality: Int, rotate: String, sharpen: String, trim: String, width: Int): String!
+  width: Int!
+}
+
+interface BlockList implements BlockDocument {
+  _analyticsKey(
+    """
+    The scope of the analytics key. Use `send` for just ingesting data. Use `query` if you need to show an analytics data in your website.
+    
+    Have in mind, if you expose your `query` analytics key in the frontend, you'll be exposing all of this block's analytics data to the public. This is generally safe, but it might not be in your case.
+    """
+    scope: AnalyticsKeyScope = send
+  ): String!
+  _id: String!
+  _idPath: String!
+  _meta: ListMeta!
+
+  """The key used to search from the frontend."""
+  _searchKey: String!
+  _slug: String!
+  _slugPath: String!
+  _sys: BlockDocumentSys!
+  _title: String!
+}
+
+type BlockOgImage {
+  url: String!
+}
+
+"""Rich text block"""
+interface BlockRichText {
+  html(
+    """
+    It automatically generates a unique id for each heading present in the HTML. Enabled by default.
+    """
+    slugs: Boolean = true
+
+    """Inserts a table of contents at the beginning of the HTML."""
+    toc: Boolean = false
+  ): String!
+  json: RichTextJson!
+  markdown: String!
+  plainText: String!
+  readingTime(
+    """Words per minute, defaults to average 183wpm"""
+    wpm: Int = 183
+  ): Int!
+}
+
+type BlockVideo {
+  aspectRatio: String!
+  fileName: String!
+  fileSize: Int!
+  height: Int!
+  lastModified: Float!
+  mimeType: String!
+  url: String!
+  width: Int!
+}
+
+input DateFilter {
+  eq: DateTime
+  isAfter: DateTime
+  isBefore: DateTime
+  neq: DateTime
+  onOrAfter: DateTime
+  onOrBefore: DateTime
+}
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+scalar JSON
+
+input ListFilter {
+  isEmpty: Boolean
+  length: Int
+}
+
+type ListMeta {
+  totalCount: Int!
+}
+
+input NumberFilter {
+  eq: Float
+  gt: Float
+  gte: Float
+  lt: Float
+  lte: Float
+  neq: Float
+}
+
+type Query {
+  _sys: RepoSys!
+  sarasa: Sarasa!
+}
+
+type RepoSys {
+  hash: String!
+  id: ID!
+  slug: String!
+  title: String!
+}
+
+interface RichTextJson {
+  content: JSON!
+  toc: JSON!
+}
+
+type Sarasa implements BlockDocument {
+  _analyticsKey(
+    """
+    The scope of the analytics key. Use `send` for just ingesting data. Use `query` if you need to show an analytics data in your website.
+    
+    Have in mind, if you expose your `query` analytics key in the frontend, you'll be exposing all of this block's analytics data to the public. This is generally safe, but it might not be in your case.
+    """
+    scope: AnalyticsKeyScope = send
+  ): String!
+  _id: String!
+  _idPath: String!
+  _slug: String!
+  _slugPath: String!
+  _sys: BlockDocumentSys!
+  _title: String!
+  title: String!
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  eq: String
+  matches: StringMatchesFilter
+  notEq: String
+  startsWith: String
+}
+
+input StringMatchesFilter {
+  caseSensitive: Boolean = true
+  pattern: String!
+}
