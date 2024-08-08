@@ -12,8 +12,8 @@ dependencies:
     specifier: ^10.4.19
     version: 10.4.19(postcss@8.4.39)
   basehub:
-    specifier: ^7.0.3
-    version: 7.0.3(@babel/runtime@7.24.7)(@types/react@18.3.3)(react-dom@19.0.0-rc-4c2e457c7c-20240522)(react@19.0.0-rc-4c2e457c7c-20240522)(typescript@5.5.2)
+    specifier: ^7.2.0
+    version: 7.2.0(@babel/runtime@7.24.7)(@types/react@18.3.3)(react-dom@19.0.0-rc-4c2e457c7c-20240522)(react@19.0.0-rc-4c2e457c7c-20240522)(typescript@5.5.2)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -410,8 +410,8 @@ packages:
       '@babel/helper-validator-identifier': 7.24.7
       to-fast-properties: 2.0.0
 
-  /@basehub/genql@8.0.1:
-    resolution: {integrity: sha512-wdiuLSM9AtPJRgu4BNRfqH4ljZZrWY5ZvrhqURiE2qcs0vKlI4KpEdv/qhkpv5n1PApSc4EFSD62A9TT7DOyeQ==}
+  /@basehub/genql@9.0.0-canary.2:
+    resolution: {integrity: sha512-diZEHtEb5hUTdiD9oO355w1Y2zpudTMXxdtU/M55Uf1pV2FuClinFPoZTjaEAxmItAqEYYvmi7UQsvDiWw0gyg==}
     dependencies:
       '@graphql-tools/graphql-file-loader': 7.5.17(graphql@16.9.0)
       '@graphql-tools/load': 7.8.14(graphql@16.9.0)
@@ -431,10 +431,8 @@ packages:
       - enquirer
     dev: false
 
-  /@basehub/mutation-api-helpers@1.0.6:
-    resolution: {integrity: sha512-8Q7X2Z+orp7hN8gcAhyD1R1SB2ALjXC3jhZ7IgbnGL7IF31qJ3Dt7oX4sJDZLn8SK0OdgUOAwJQQc/f6vyY+XQ==}
-    dependencies:
-      type-fest: 3.7.1
+  /@basehub/mutation-api-helpers@2.0.0:
+    resolution: {integrity: sha512-uZ6hYIcXF5105PdBceSR7Olj83/HjepD+pCyOqbaWX2VC8nvgRvDwARE6ODlxPVLjQidHtjmcm5x1FNPhCA2+Q==}
     dev: false
 
   /@emnapi/runtime@1.2.0:
@@ -1180,20 +1178,6 @@ packages:
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
     dev: true
 
-  /@radix-ui/react-compose-refs@1.0.1(@types/react@18.3.3)(react@19.0.0-rc-4c2e457c7c-20240522):
-    resolution: {integrity: sha512-fDSBgd44FKHa1FRMU59qBMPFcl2PZE+2nmqunj+BWFyYYjnhIDWL2ItDs3rrbJDQOtzt5nIebLCQc4QRfz6LJw==}
-    peerDependencies:
-      '@types/react': '*'
-      react: ^16.8 || ^17.0 || ^18.0
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-    dependencies:
-      '@babel/runtime': 7.24.7
-      '@types/react': 18.3.3
-      react: 19.0.0-rc-4c2e457c7c-20240522
-    dev: false
-
   /@radix-ui/react-compose-refs@1.1.0(@types/react@18.3.3)(react@19.0.0-rc-4c2e457c7c-20240522):
     resolution: {integrity: sha512-b4inOtiaOnYf9KWyO3jAeeCG6FeyfY6ldiEPanbUjWd+xIk5wZeHa8yVwmrJ2vderhu/BQvzCrJI0lHd+wIiqw==}
     peerDependencies:
@@ -1203,21 +1187,6 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@types/react': 18.3.3
-      react: 19.0.0-rc-4c2e457c7c-20240522
-    dev: false
-
-  /@radix-ui/react-slot@1.0.2(@types/react@18.3.3)(react@19.0.0-rc-4c2e457c7c-20240522):
-    resolution: {integrity: sha512-YeTpuq4deV+6DusvVUW4ivBgnkHwECUu0BiN43L5UCDFgdhsRUWAghhTF5MbvNTPzmiFOx90asDSUjWuCNapwg==}
-    peerDependencies:
-      '@types/react': '*'
-      react: ^16.8 || ^17.0 || ^18.0
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-    dependencies:
-      '@babel/runtime': 7.24.7
-      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.3)(react@19.0.0-rc-4c2e457c7c-20240522)
       '@types/react': 18.3.3
       react: 19.0.0-rc-4c2e457c7c-20240522
     dev: false
@@ -1864,16 +1833,16 @@ packages:
   /balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
-  /basehub@7.0.3(@babel/runtime@7.24.7)(@types/react@18.3.3)(react-dom@19.0.0-rc-4c2e457c7c-20240522)(react@19.0.0-rc-4c2e457c7c-20240522)(typescript@5.5.2):
-    resolution: {integrity: sha512-TMaOGKmMyy+tuJ1A+Qd+gYhrzVstzoGVahX/0SLME/a01uJdu5+uaCz7JckePuV7HEYpmZ3cZSq9xqbRtPXSdw==}
+  /basehub@7.2.0(@babel/runtime@7.24.7)(@types/react@18.3.3)(react-dom@19.0.0-rc-4c2e457c7c-20240522)(react@19.0.0-rc-4c2e457c7c-20240522)(typescript@5.5.2):
+    resolution: {integrity: sha512-9pVuGDEvYUooGmX8TTtBgkuPLg2LiYgdagXlP8Pwr8He578w6YwqXNDRKkDeDH28rK1721TMnRtrCzqeyBAqWA==}
     hasBin: true
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@basehub/genql': 8.0.1
-      '@basehub/mutation-api-helpers': 1.0.6
-      '@radix-ui/react-slot': 1.0.2(@types/react@18.3.3)(react@19.0.0-rc-4c2e457c7c-20240522)
+      '@basehub/genql': 9.0.0-canary.2
+      '@basehub/mutation-api-helpers': 2.0.0
+      '@radix-ui/react-slot': 1.1.0(@types/react@18.3.3)(react@19.0.0-rc-4c2e457c7c-20240522)
       arg: 5.0.1
       dotenv-mono: 1.3.10
       esbuild: 0.19.2
@@ -5324,11 +5293,6 @@ packages:
   /type-fest@1.4.0:
     resolution: {integrity: sha512-yGSza74xk0UG8k+pLh5oeoYirvIiWo5t0/o3zHHAO2tRDiZcxWP7fywNlXhqb6/r6sWvwi+RsyQMWhVLe4BVuA==}
     engines: {node: '>=10'}
-    dev: false
-
-  /type-fest@3.7.1:
-    resolution: {integrity: sha512-8LZNdvuztgxCF4eYpEmPYUPS0lbbByM2qHcp2oMxHZhWLIQB9QE36EeQ1PKwsUIDZXEP8HCBEmkBbT1//kLU4Q==}
-    engines: {node: '>=14.16'}
     dev: false
 
   /typed-array-buffer@1.0.2:
